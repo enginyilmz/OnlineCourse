@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVC_OnlineCourse.Models.MSSQL.Student>
+
+@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Students</h2>
+
+<p>
+    @Html.ActionLink("Create New", "StudentForm")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
+            Date Of Birth
+        </th>
+        <th>
+            School Name
+        </th>
+        <th>
+            Gender
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.schoolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  studentID=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { studentID = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
